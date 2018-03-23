@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`测试第1个 自定义标题 head不传入 无尾部 无宽度 1`] = `
+<div
+  className="gome-modal"
+>
+  <div
+    className="gome-modal-mask"
+  />
+  <div
+    className="gome-modal-content"
+    id="modalContent"
+    style={
+      Object {
+        "width": "520px",
+      }
+    }
+  >
+    <a
+      className="gome-modal-close"
+      onClick={[Function]}
+    >
+      x
+    </a>
+    <h3
+      className="gome-modal-header"
+    >
+      <span>
+        第一个弹窗
+      </span>
+    </h3>
+    <div
+      className="gome-modal-body"
+    >
+      <p>
+        第1行文字
+      </p>
+      <p>
+        第2行文字
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`测试第2个 默认标题 尾部展示默认 宽600 1`] = `
+<div
+  className="gome-modal"
+>
+  <div
+    className="gome-modal-mask"
+  />
+  <div
+    className="gome-modal-content"
+    id="modalContent"
+    style={
+      Object {
+        "width": "600px",
+      }
+    }
+  >
+    <a
+      className="gome-modal-close"
+      onClick={[Function]}
+    >
+      x
+    </a>
+    <h3
+      className="gome-modal-header"
+    >
+      <span>
+        默认title
+      </span>
+    </h3>
+    <div
+      className="gome-modal-body"
+    >
+      <p>
+        第1行文字
+      </p>
+      <p>
+        第2行文字
+      </p>
+      <p>
+        第3行文字
+      </p>
+      <p>
+        第4行文字
+      </p>
+    </div>
+    <div
+      className="gome-modal-foot"
+    >
+      <div>
+        <button
+          className="gome-btn gome-btn-def"
+          onClick={[Function]}
+        >
+          <span>
+            Cancel
+          </span>
+        </button>
+        <button
+          className="gome-btn gome-btn-primary"
+          onClick={[Function]}
+        >
+          <span>
+            ok
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`测试第3个自定义展示尾部 1`] = `
+<div
+  className="gome-modal"
+>
+  <div
+    className="gome-modal-mask"
+  />
+  <div
+    className="gome-modal-content"
+    id="modalContent"
+    style={
+      Object {
+        "width": "800px",
+      }
+    }
+  >
+    <a
+      className="gome-modal-close"
+      onClick={[Function]}
+    >
+      x
+    </a>
+    <h3
+      className="gome-modal-header"
+    >
+      <span>
+        默认title
+      </span>
+    </h3>
+    <div
+      className="gome-modal-body"
+    >
+      <p>
+        111
+      </p>
+    </div>
+    <div
+      className="gome-modal-foot"
+    >
+      <div>
+        <button
+          className="gome-btn gome-btn-def"
+          onClick={[Function]}
+        >
+          <span>
+            return
+          </span>
+        </button>
+        <button
+          className="gome-btn gome-btn-primary"
+          onClick={[Function]}
+        >
+          <span>
+            submit
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`测试第3个自定义展示尾部 2`] = `
+<div
+  className="gome-modal"
+>
+  <div
+    className="gome-modal-mask"
+  />
+  <div
+    className="gome-modal-content"
+    id="modalContent"
+    style={
+      Object {
+        "width": "520px",
+      }
+    }
+  >
+    <a
+      className="gome-modal-close"
+      onClick={[Function]}
+    >
+      x
+    </a>
+    <h3
+      className="gome-modal-header"
+    >
+      <span>
+        即将关闭
+      </span>
+    </h3>
+    <div
+      className="gome-modal-body"
+    >
+      <p>
+        第1行文字
+      </p>
+    </div>
+    <div
+      className="gome-modal-foot"
+    >
+      <div>
+        <button
+          className="gome-btn gome-btn-def"
+          onClick={[Function]}
+        >
+          <span>
+            Cancel
+          </span>
+        </button>
+        <button
+          className="gome-btn gome-btn-primary"
+          onClick={[Function]}
+        >
+          <span>
+            ok
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

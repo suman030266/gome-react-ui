@@ -1,0 +1,93 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  font-family: 'Microsoft Yahei', '微软雅黑', 'PingFang SC', 'Hiragino Sans GB', '黑体', sans-serif;
+}
+.hide{
+  display: none;
+}
+.gome-modal{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  .gome-modal-mask{
+    background-color: rgba(0, 0, 0, .65);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+  }
+  .gome-modal-content{
+    /*z-index: 2;
+    position: fixed;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    line-height: 28px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    */
+    max-height: 100%;
+    min-height: 100px;
+    min-width: 300px;
+    max-width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    background-color: #fff;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    .gome-modal-close{
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      height: 20px;
+      width: 20px;
+      line-height: 20px;
+      font-size: 20px;
+      color: #888;
+      text-align: center;
+      cursor: pointer;
+    }
+    h3.gome-modal-header{
+      padding: 16px 24px;
+      border-radius: 4px 4px 0 0;
+      background: #fff;
+      color: rgba(0, 0, 0, 0.65);
+      span{
+        display: inline-block;
+        margin: 0;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+    .gome-modal-body{
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .gome-modal-foot{
+      padding: 10px 16px;
+      div{
+        text-align: right;
+        button{
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}

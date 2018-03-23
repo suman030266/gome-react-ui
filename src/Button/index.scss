@@ -1,0 +1,91 @@
+.gome-btn {
+  outline: none;
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 0 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  height: 32px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  position: relative;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fff;
+  border-color: #d9d9d9;
+  font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+
+  &.gome-btn-primary {
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+  }
+  &.gome-btn-primary:hover{
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+  }
+  &.gome-btn-primary:active{
+    background-color: #096dd9;
+    border-color: #096dd9;
+    transition: none;
+  }
+  &.gome-btn-clicked:after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    border-radius: inherit;
+    border: 0 solid #1890ff;
+    opacity: 0.4;
+    -webkit-animation: buttonEffect .4s;
+            animation: buttonEffect .4s;
+    display: block;
+  }
+  &.gome-btn-danger.gome-btn-clicked:after {
+    border-color: #f5222d;
+  }
+  &.gome-btn-dashed {
+    color: rgba(0, 0, 0, 0.65);
+    background-color: #fff;
+    border-color: #d9d9d9;
+    border-style: dashed;
+  }
+  &.gome-btn-danger {
+    color: #f5222d;
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+  }
+  &.gome-btn-large {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+  }
+  &.gome-btn-small {
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+  }
+  &.gome-btn-disable,
+  &.gome-btn-disable:active,
+  &.gome-btn-disable.active,
+  &.gome-btn-disable:hover {
+    color: rgba(0, 0, 0, 0.25);
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+    cursor: not-allowed;
+  }
+}
