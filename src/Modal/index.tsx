@@ -1,13 +1,46 @@
-import React,{Component} from 'react';
-import classnames from 'classnames';
+import * as React from "react";
+import classNames from 'classnames';
+console.log(classNames);
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import './index.scss';
 import Mask from './mask';
 
-export default class Model extends React.Component{
-  constructor(props){
-    super();
+interface ModalProps  {
+  visible : boolean;
+  width: any;
+  height: any;
+  closeBtn: boolean|undefined;
+  title: string|undefined;
+  footerType: string|undefined;
+  footer: any;
+  children: any;
+  canMaskClick: boolean|undefined;
+  autoClose: boolean|undefined;
+  closeTimeout: number|undefined;
+  onCancel: any;
+  onOk: any;
+}
+
+interface ModalState {
+   visible : boolean;
+   width: any;
+   height: any;
+   closeBtn: boolean|undefined;
+   title: string|undefined;
+   footerType: string|undefined;
+   footer: any;
+   children: any;  // 弹窗内容 必传
+   canMaskClick: boolean|undefined;
+   autoClose: boolean|undefined;
+   closeTimeout: number|undefined;
+}
+
+export default class Model extends React.Component<ModalProps, ModalState> {
+  public state : ModalState;
+
+  constructor(props: ModalProps){
+    super(props);
     this.state = {
       visible: props.visible,  // 是否展示 默认不展示
       width: props.width != undefined ? (props.width + 'px') : '520px',  // 弹层宽度 默认520px
@@ -22,7 +55,7 @@ export default class Model extends React.Component{
       closeTimeout: props.closeTimeout || 3000 // 自动关闭时间 默认3000毫秒
     };
   }
-  componentDidMount(){
+  public componentDidMount(){
     if(this.state.autoClose){
       setTimeout(()=>{
         this.setState({
@@ -31,38 +64,42 @@ export default class Model extends React.Component{
       }, this.state.closeTimeout);
     }
   }
-  componentWillReceiveProps(newProps, newState){
+  public componentWillReceiveProps(newProps, newState){
     this.setState({
       visible: newProps.visible
     });
   }
-  closeModal(cb){
+  public closeModal(cb){
     this.setState({
       visible: false
     },()=>{
       cb && cb();
     });
   }
-  handleClose(){
-    this.closeModal();
+  public handleClose(){
+    this.closeModal(function(){});
   }
-  handleCancel(){
+  public handleCancel(){
     console.log('默认 cancel');
     this.props.onCancel();
     // this.closeModal();
   }
-  handleOk(){
+  public handleOk(){
     console.log('默认 ok');
     this.props.onOk();
     // this.closeModal(this.props.onOk);
   }
-  render(){
+  public render(){
     let { closeBtn, title, footerType, footer, children, height, width, canMaskClick, visible } = this.state;
+    // classnames + typescript 结合有问题 不知如何给默认类型
+    // const collapsePanelClassName:string = classNames({
+    //   "gome-modal": true,
+    //   "hide": !visible
+    // });
+
+    let isHide:string = !visible ? 'hide': '';
     return (
-      <div className={classnames({
-        "gome-modal": true,
-        "hide": !visible
-      })}>
+      <div className={"gome-modal " + isHide}>
         <Mask clickCb={this.handleClose.bind(this)} canClick={canMaskClick} />
         <div id="modalContent" className="gome-modal-content" style={{width, height}}>
           {closeBtn ? (<a className="gome-modal-close" onClick={this.handleClose.bind(this)}>x</a>) : null}
