@@ -16,25 +16,37 @@ yarn add gome-react-ui
 npm install gome-react-ui
 ```
 
-> 启动项目
+
+
+
+
+# 引入
+> demo
 
 ``` javascript
-yarn start
+import GomeReactUI from 'gome-react-ui';
+let {Modal, Button} = GomeReactUI; // 导入相应组件
 ```
 
-> 引入&&使用
+
+
+
+# modal
+> demo
 
 ``` javascript
 import React,{Component} from 'react';
-import GomeReactUI from '../../../gome-react-ui/dist/gome-react-ui';
+import Con1 from './con1';
+import PropTypes from 'prop-types';
+import GomeReactUI from 'gome-react-ui';
 let {Modal, Button} = GomeReactUI;
 
-export default class ModelTest extends Component{
+export default class ComponentName extends Component{
   constructor(props){
     super();
     this.state = {
       visible: false,
-      footerType: 'default',
+      footerType: 'self',
       width: 800
     }
   }
@@ -44,42 +56,37 @@ export default class ModelTest extends Component{
     });
   }
   handleOk = () => {
+    console.log('自定义 ok');
     this.setState({ visible: false });
   }
   handleCancel = () => {
+    console.log('自定义 cancel');
     this.setState({ visible: false });
   }
   componentDidMount(){
-    setTimeout(()=>{
-      this.showModal();
-    }, 3000);
-  }
-  defaultCancelCb(){
-    console.log('cccccc');
-  }
-  defaultOkCb(){
-    console.log('okokok');
+    this.showModal();
   }
   render(){
-    let { visible, loading, footerType, width} = this.state;
+    let { footerType, visible } = this.state;
+    const options = {
+      visible,
+      footerType,
+      closeBtn: false,
+      canMaskClick: false,
+      title: "传入标题",
+      onOk: this.handleOk,
+      onCancel: this.handleCancel,
+      closeTimeout: 5000,
+      footer: [
+        <Button key="back" onClick={this.handleCancel}>return</Button>,
+        <Button key="submit" onClick={this.handleOk} type="primary">submit</Button>
+      ]
+    };
     return (
       <div>
-        <Modal
-          visible={visible}
-          title={"传入标题"}
-          width={width}
-          defaultCancelCb={this.defaultCancelCb}
-          defaultOkCb={this.defaultOkCb}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          footerType={footerType}
-          footer={[
-            <Button key="back" onClick={this.handleCancel}>return</Button>,
-            <Button key="submit" onClick={this.handleOk} type="primary">submit</Button>,
-          ]}
-        >
-          <p>第1行文字</p>
-          <p>第2行文字</p>
+        <Modal {...options} >
+          <p>弹窗主体内容</p>
+          <p>可以是dom元素、组件</p>
         </ Modal>
       </div>
     )
@@ -87,19 +94,23 @@ export default class ModelTest extends Component{
 }
 ```
 
-> 参数列表
+> modal参数列表
 
 | 参数             |    说明       | 类型        | 默认值        |
 | :--------       | --------:      | :--:       | :--:       |
 | visible        | 是否展示弹层       |  boolean         | 无          |
-| title           |   弹窗头部内容展示       |  string       | 无          |
-| width            |    弹层宽度      | number       | 520          |
+| title           |   弹窗头部内容展示       |  string       | '提示'          |
+| closeBtn           |   是否需要关闭按钮       |  boolean       | true          |
+| width            |    弹层宽度      | number       | 无          |
+| height            |    弹层高度      | number       | 无          |
 | footerType            |    弹层底部展示  'default'默认按钮 'none'不展示底部 'self'自定义底部内容     | string       | 'default'          |
 | footer            |    弹层底部内容      | Array       | 无         |
-| width            |    弹层宽度      | number       | 520          |
 | 组件中间内容           |    弹层主体内容      | dom       | 无          |
 | onOk           |    点击底部确定按钮回调      | function       | 无          |
 | onCancel           |    点击底部取消按钮回调      | function       | 无          |
+| canMaskClick           |    点击遮罩是否隐藏弹窗      | boolean       | true          |
+| autoClose           |    点击自动关闭      | boolean       | false          |
+| closeTimeout           |    自动关闭时间      | number       | 3000          |
 
 
 
@@ -128,10 +139,4 @@ export default class ModelTest extends Component{
 
 
 
-
-
-
-
-
-
-> aa
+> other
