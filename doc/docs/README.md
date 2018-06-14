@@ -36,19 +36,24 @@ let {Modal, Button} = GomeReactUI; // 导入相应组件
 
 ``` javascript
 import React,{Component} from 'react';
-import Con1 from './con1';
 import PropTypes from 'prop-types';
-import GomeReactUI from 'gome-react-ui';
+import GomeReactUI from '../../../gome-react-ui/dist/gome-react-ui';
 let {Modal, Button} = GomeReactUI;
 
-export default class ComponentName extends Component{
+export default class ModelTest extends Component{
   constructor(props){
     super();
     this.state = {
       visible: false,
-      footerType: 'self',
-      width: 800
+      footerType: 'default',
+      arr: ['aaa', 'bbb', 'ccc']
     }
+  }
+  static childContextTypes = {
+    arr: PropTypes.array
+  }
+  getChildContext(){
+    return {arr: this.state.arr}
   }
   showModal = () => {
     this.setState({
@@ -56,27 +61,32 @@ export default class ComponentName extends Component{
     });
   }
   handleOk = () => {
-    console.log('自定义 ok');
+    console.log('自定义 ok回调');
     this.setState({ visible: false });
   }
   handleCancel = () => {
-    console.log('自定义 cancel');
+    console.log('自定义 cancel回调');
     this.setState({ visible: false });
   }
   componentDidMount(){
-    this.showModal();
+    setTimeout(()=>{
+      this.showModal();
+    }, 1000);
   }
   render(){
     let { footerType, visible } = this.state;
     const options = {
       visible,
+      title: '自定义标题',
       footerType,
-      closeBtn: false,
-      canMaskClick: false,
-      title: "传入标题",
+      closeBtn: true,
+      canMaskClick: true,
       onOk: this.handleOk,
       onCancel: this.handleCancel,
-      closeTimeout: 5000,
+      // width: 800,
+      // height: 500,
+      // autoClose: true,
+      // closeTimeout: 5000,
       footer: [
         <Button key="back" onClick={this.handleCancel}>return</Button>,
         <Button key="submit" onClick={this.handleOk} type="primary">submit</Button>
@@ -85,13 +95,21 @@ export default class ComponentName extends Component{
     return (
       <div>
         <Modal {...options} >
-          <p>弹窗主体内容</p>
-          <p>可以是dom元素、组件</p>
+          <p>第1行文字</p>
+          <p>第2行文字</p>
+          <p>第3行文字</p>
+          <p>第3行文字</p>
+          <p>第3行文字</p>
+          <p>第3行文字</p>
+          <p>第3行文字</p>
+          <p>第4行文字</p>
         </ Modal>
       </div>
     )
   }
 }
+
+
 ```
 
 > modal参数列表
