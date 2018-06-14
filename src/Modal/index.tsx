@@ -101,6 +101,12 @@ export default class Modal extends React.Component<Props, State> {
     this.props.onOk();
     this.clearTimeouts();
   }
+  public xx(fn){
+    return ()=>{
+      fn && fn();
+      this.clearTimeouts();
+    }
+  }
   public render(){
     let { closeBtn, title, footerType, footer, height, width, canMaskClick, visible } = this.state;
     let { children } = this.props;
