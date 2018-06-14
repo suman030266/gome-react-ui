@@ -2,7 +2,6 @@ import * as React from "react";
 import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import './index.scss';
-
 // enum State{ 'disable', 'able' };
 // enum Shape{ 'circle', 'circle-outline' };
 // enum Size{ 'large', 'default', 'small' };

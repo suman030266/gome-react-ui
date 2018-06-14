@@ -26,7 +26,7 @@
     "pretestss": "jshint -c .jshintrc src",
     "dev": "webpack-dev-server --port 8899 --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.dev.js",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "author": "",
   "license": "ISC",
@@ -43,14 +43,15 @@
     "babel-eslint": "^8.1.1",
     "babel-jest": "^23.0.0-alpha.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-import": "^1.0.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.9",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-babel": "^4.0.0",
@@ -61,24 +62,23 @@
     "eslint-tinker": "^0.4.0",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^23.0.0-alpha.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.1.0",
+    "jest-resolve": "^23.0.0-alpha.0",
     "node-sass": "^4.7.2",
     "react-test-renderer": "^16.2.0",
+    "sass-loader": "^6.0.7",
     "style-loader": "^0.19.1",
+    "ts-jest": "^22.4.6",
+    "ts-loader": "3.5.0",
+    "typescript": "^2.7.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-runtime": "6.x",
     "classnames": "^2.2.5",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest-resolve": "^23.0.0-alpha.0",
-    "less": "^3.0.1",
-    "less-loader": "^4.1.0",
     "moment": "^2.19.3",
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.6.2",
@@ -92,10 +92,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "sass-loader": "^6.0.7",
-    "swipe-js-iso": "^2.0.4",
-    "ts-loader": "3.5.0",
-    "typescript": "^2.7.2"
+    "swipe-js-iso": "^2.0.4"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -108,8 +105,7 @@
       "!**/webpack.config.js"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      ".*\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.(s?css|less)$": "identity-obj-proxy"
     },
     "coverageThreshold": {
       "global": {
@@ -120,18 +116,20 @@
       }
     },
     "moduleFileExtensions": [
-      "js",
-      "jsx"
+      "ts",
+      "tsx",
+      "js"
     ],
     "transform": {
-      "^.+\\.js$": "babel-jest"
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.jsx?$": "babel-jest"
     }
   },
   "lint-staged": {
     "{components}/**/*.{js,jsx}": [
       "npm run eslint"
     ],
-    "{components}/**/*.less": "stylelint --syntax less"
+    "{components}/**/*.sass": "stylelint --syntax sass"
   },
   "pre-commit": [
     "lint-staged"
