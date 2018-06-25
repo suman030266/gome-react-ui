@@ -121,15 +121,17 @@ export default class ModelTest extends Component{
 | closeBtn           |   是否需要关闭按钮       |  boolean       | true          |
 | width            |    弹层宽度      | number       | 无          |
 | height            |    弹层高度      | number       | 无          |
-| footerType            |    弹层底部展示  'default'默认按钮 'none'不展示底部 'self'自定义底部内容     | string       | 'default'          |
-| footer            |    弹层底部内容（footerType为 'self'时生效）      | Array       | 无         |
+| footerType            |    弹层底部是否展示     | boolean       | true          |
 | 组件中间内容           |    弹层主体内容      | dom       | 无          |
 | onOk           |    点击底部确定按钮回调      | function       | 无          |
 | onCancel           |    点击底部取消按钮回调      | function       | 无          |
 | canMaskClick           |    点击遮罩是否隐藏弹窗      | boolean       | true          |
 | autoClose           |    点击自动关闭      | boolean       | false          |
 | closeTimeout           |    自动关闭时间（autoClose为true时生效）      | number       | 3000          |
-
+| btnType         |    按钮类型 'sure'/'cancel'/'both'       | string       | 'sure'   |  
+| okText         |    确定按钮文字       | string       | '确定'   |  
+| cancelText         |    取消按钮文字       | string       | '取消'   |  
+| btnArr
 
 
 

@@ -2,7 +2,6 @@
   outline: none;
   height: 32px;
   line-height: 32px;
-  display: inline-block;
   font-weight: 400;
   text-align: center;
   -ms-touch-action: manipulation;
@@ -26,7 +25,7 @@
   background-color: #fff;
   border-color: #d9d9d9;
   font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
-
+  margin: 0 10px;
   &.gome-btn-primary {
     color: #fff;
     background-color: #1890ff;
@@ -72,7 +71,7 @@
   &.gome-btn-large {
     height: 40px;
     line-height: 40px;
-    padding: 0 20px;
+    padding: 0 30px;
   }
   &.gome-btn-small {
     height: 20px;

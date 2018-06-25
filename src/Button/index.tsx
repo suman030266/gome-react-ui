@@ -36,7 +36,7 @@ export default class Button extends React.Component<Props, State> {
       shape: props.shape || '',
       size: props.size || '',
       "gome-btn-def": props.type === 'default',
-      states: "able",
+      states: props.states || "able",
       className: props.className || '',
       onClick: props.onClick || ''
       // children: props.children
@@ -52,7 +52,7 @@ export default class Button extends React.Component<Props, State> {
     }
   }
   public render(){
-    let { type, size, states } = this.state;
+    let { type, size, states, className } = this.state;
     let { children } = this.props;
     let obj = classNames({
       "gome-btn": true,
@@ -65,7 +65,7 @@ export default class Button extends React.Component<Props, State> {
       "gome-btn-disable": states == 'disable'
     });
     return (
-      <button className={obj} onClick={this._buttonClicked.bind(this)}>
+      <button className={(obj + ' ' + className).replace(/\s$/, '')} onClick={this._buttonClicked.bind(this)}>
         <span>{children || '按钮'}</span>
       </button>
     )
